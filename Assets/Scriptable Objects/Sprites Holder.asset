@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cdc7960075047498d869dc88a73097, type: 3}
+  m_Name: Sprites Holder
+  m_EditorClassIdentifier: 
+  tileThemes: 0
+  bicrossTheme: 0
+  wallTiles:
+  - {fileID: 21300000, guid: 4ef7a9bebeab6fd449fae89b2e965b48, type: 3}
+  groundTiles:
+  - {fileID: 21300000, guid: 6570ad2116772fd409eca8aeb3f3f605, type: 3}
+  filledSquareSprite:
+  - {fileID: 21300000, guid: 0baf0fae36933fc4cba55adc83585b36, type: 3}
+  emptySquareSprite:
+  - {fileID: 21300000, guid: 627eae37eae514f47941f9e1066549cc, type: 3}
+  emptyDotSprite:
+  - {fileID: 21300000, guid: f73ced8a1f554c14fa912098cda82b6a, type: 3}
+  emptyLineSprite:
+  - {fileID: 21300000, guid: 5b62b1149c8a5714382920cb86e36ce2, type: 3}
+  filledDotSprite:
+  - {fileID: 21300000, guid: 8219d6dbe7d714a4ebe31804a26508e4, type: 3}
+  filledLineSprite:
+  - {fileID: 21300000, guid: c67769612996032429bb3f934f6fea97, type: 3}

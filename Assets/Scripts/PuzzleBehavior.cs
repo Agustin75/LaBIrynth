@@ -8,16 +8,13 @@ public class PuzzleBehavior : MonoBehaviour
 	[SerializeField]
 	private Transform bicrossParentTransform;
 
-	[SerializeField]
 	// bicrossCanvasParent holds every item to be shown to the player while on bicross mode
+	[SerializeField]
 	private GameObject bicrossCanvasParent, continuePanel;
 
 	// Holds every puzzle variation
 	[SerializeField]
 	private BicrossManager[] puzzlePrefabs;
-
-	[SerializeField]
-	private PlayerInput inputManager;
 
 	[Header("Scriptable Objects")]
 	[SerializeField]

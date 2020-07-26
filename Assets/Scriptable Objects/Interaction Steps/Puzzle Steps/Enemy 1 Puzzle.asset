@@ -16,3 +16,4 @@ MonoBehaviour:
   puzzleList:
   - {fileID: 11400000, guid: b6177cc477ca30a4186d531318541ba2, type: 2}
   popupPanel: {fileID: 0}
+  mapToUnlock: 0

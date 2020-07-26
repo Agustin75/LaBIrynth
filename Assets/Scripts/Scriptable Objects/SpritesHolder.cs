@@ -5,14 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TileLayouts", menuName = "Tile Layouts")]
 public class SpritesHolder : ScriptableObject
 {
+	[Header("Selected Themes")]
 	[SerializeField]
-	private Themes tileThemes, bicrossTheme;
+	private Themes labyrinthTheme;
+	[SerializeField]
+	private Themes bicrossTheme;
 
+	[Header("Labyrinth Sprites")]
 	[SerializeField]
 	private Sprite[] wallTiles;
 	[SerializeField]
 	private Sprite[] groundTiles;
+	[SerializeField]
+	private Sprite[] inactiveWarps;
+	[SerializeField]
+	private Sprite[] activeWarps;
 
+	[Header("Bicross Sprites")]
 	[SerializeField]
 	private Sprite[] filledSquareSprite;
 	[SerializeField]
@@ -28,12 +37,17 @@ public class SpritesHolder : ScriptableObject
 
 	public Sprite GetWallTile()
 	{
-		return wallTiles[(int)tileThemes];
+		return wallTiles[(int)labyrinthTheme];
 	}
 
 	public Sprite GetGroundTile()
 	{
-		return groundTiles[(int)tileThemes];
+		return groundTiles[(int)labyrinthTheme];
+	}
+
+	public Sprite GetWarpSprite(bool _active)
+	{
+		return _active ? activeWarps[(int)labyrinthTheme] : inactiveWarps[(int)labyrinthTheme];
 	}
 
 	public Sprite GetSquareSprite(BicrossSquareState _state)

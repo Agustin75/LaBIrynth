@@ -63,8 +63,6 @@ public class BicrossBehavior : MonoBehaviour
 		rowHints = _puzzle.GetRowHints();
 		columnHints = _puzzle.GetColumnHints();
 
-		// TODO: Add Squares based on the number of rows and columns
-
 		Image currentHint;
 
 		// Loop through the arrays of row hints

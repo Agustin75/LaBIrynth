@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90047b13c05b8543a09b51a24d5a363, type: 3}
-  m_Name: Remove Object
+  m_Script: {fileID: 11500000, guid: 96bc73563587da24981950ff7d6c4953, type: 3}
+  m_Name: Player Teleporting
   m_EditorClassIdentifier: 
-  stepType: 2
-  puzzleList: []
-  popupPanel: {fileID: 0}
-  mapToUnlock: 0
+  value: 0

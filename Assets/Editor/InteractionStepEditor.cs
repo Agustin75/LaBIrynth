@@ -33,6 +33,9 @@ public class InteractionStepEditor : Editor
 			case InteractionStepTypes.Story:
 				// TODO: Display the Story field
 				break;
+			case InteractionStepTypes.UnlockMap:
+				step.mapToUnlock = (int)EditorGUILayout.IntField("Map To Unlock", step.mapToUnlock);
+				break;
 		}
 
 		// This applies the changes made to array Elements, among other things

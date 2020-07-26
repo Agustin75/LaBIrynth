@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90047b13c05b8543a09b51a24d5a363, type: 3}
-  m_Name: Remove Object
+  m_Script: {fileID: 11500000, guid: a04b37dc303ef1e4797cfdf48f0af3a6, type: 3}
+  m_Name: Current Warp
   m_EditorClassIdentifier: 
-  stepType: 2
-  puzzleList: []
-  popupPanel: {fileID: 0}
-  mapToUnlock: 0
+  warpID: -1

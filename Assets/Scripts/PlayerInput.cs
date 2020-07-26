@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
 	[SerializeField]
 	private GameEvent interactEvent;
 	[SerializeField]
-	private GameEvent pauseEvent;
+	private GameEvent pauseEvent, resumeEvent;
 
 	private int xMovement, yMovement;
 
@@ -30,15 +30,23 @@ public class PlayerInput : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (isPaused)
+		if (Input.GetKeyDown(KeyCode.Escape))
 		{
+			if (isPaused)
+			{
+				resumeEvent.Raise();
+			}
+			else
+			{
+				pauseEvent.Raise();
+			}
+
+			isPaused.value = !isPaused;
 			return;
 		}
 
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (isPaused)
 		{
-			pauseEvent.Raise();
-			isPaused.value = true;
 			return;
 		}
 
@@ -111,8 +119,21 @@ public class PlayerInput : MonoBehaviour
 		interactEvent.Raise();
 	}
 
-	public void GameResumed()
+	//////////////////////////////////
+	/// Game Event functions
+	//////////////////////////////////
+	public void OnWarp()
 	{
-		isPaused.value = false;
+		currControlType.value = ControlType.Menu;
+	}
+
+	public void OnTeleport()
+	{
+		currControlType.value = ControlType.Labyrinth;
+	}
+
+	public void OnMenuClosed()
+	{
+		currControlType.value = ControlType.Labyrinth;
 	}
 }

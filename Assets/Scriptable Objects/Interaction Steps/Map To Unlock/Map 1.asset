@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b90047b13c05b8543a09b51a24d5a363, type: 3}
-  m_Name: Remove Object
+  m_Name: Map 1
   m_EditorClassIdentifier: 
-  stepType: 2
+  stepType: 4
   puzzleList: []
   popupPanel: {fileID: 0}
   mapToUnlock: 0

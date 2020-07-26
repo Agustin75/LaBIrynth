@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cdc7960075047498d869dc88a73097, type: 3}
   m_Name: Sprites Holder
   m_EditorClassIdentifier: 
-  tileThemes: 0
+  labyrinthTheme: 0
   bicrossTheme: 0
   wallTiles:
   - {fileID: 21300000, guid: 4ef7a9bebeab6fd449fae89b2e965b48, type: 3}
   groundTiles:
   - {fileID: 21300000, guid: 6570ad2116772fd409eca8aeb3f3f605, type: 3}
+  inactiveWarps:
+  - {fileID: 21300000, guid: 8fb287772b1b3434c9c5a635ce148342, type: 3}
+  activeWarps:
+  - {fileID: 21300000, guid: 48360456075ef56489daf3a639b1ccbb, type: 3}
   filledSquareSprite:
   - {fileID: 21300000, guid: 0baf0fae36933fc4cba55adc83585b36, type: 3}
   emptySquareSprite:

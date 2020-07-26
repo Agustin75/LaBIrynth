@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 	private PuzzleBehavior puzzleManager;
 	[SerializeField]
 	private BicrossPuzzle[] firstPuzzles;
+	[SerializeField]
+	private Map firstMapUnlocked;
+	[SerializeField]
+	private InteractionStep[] firstEvents;
 
 	[Header("Initialize Variables")]
 	[SerializeField]
@@ -19,7 +23,8 @@ public class GameManager : MonoBehaviour
 		isPaused.value = false;
 		// TODO: This happens only when the game is first started. Once the game is saved, it will start either in the Labyrinth, or in the last
 		//   bicross puzzle the player started (If it hasn't been finished yet)
-		puzzleManager.SetPuzzles(firstPuzzles);
+		// TODO: Move to Tutorial
+		//puzzleManager.SetPuzzles(firstPuzzles);
     }
 
     // Update is called once per frame

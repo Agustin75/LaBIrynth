@@ -9,4 +9,5 @@ public class InteractionStep : ScriptableObject
 	public BicrossPuzzle[] puzzleList;
 	public GameObject popupPanel;
 	// TODO: Add a variable for story ScriptableObjects
+	public int mapToUnlock;
 }

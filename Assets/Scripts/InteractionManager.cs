@@ -11,6 +11,9 @@ public class InteractionManager : MonoBehaviour
 	[SerializeField]
 	private PuzzleBehavior puzzleManager;
 
+	[SerializeField]
+	private MapManager mapsManager;
+
 	[Header("Scriptable Objects")]
 	[SerializeField]
 	private ControlTypeVariable currentControlType;
@@ -90,6 +93,9 @@ public class InteractionManager : MonoBehaviour
 			case InteractionStepTypes.Story:
 				// TODO: Clear the Story steps variables, if any
 				break;
+			case InteractionStepTypes.UnlockMap:
+				// TODO: Clear the Unlock Map steps variables, if any
+				break;
 			default:
 				break;
 		}
@@ -115,6 +121,17 @@ public class InteractionManager : MonoBehaviour
 	{
 		// If there is currently no step set up || The current step is not a Puzzle step
 		if (stepsToComplete == null || stepsToComplete[currentStep].stepType != InteractionStepTypes.Puzzle)
+		{
+			return;
+		}
+
+		NextStep();
+	}
+
+	public void MapUnlocked()
+	{
+		// If there is currently no step set up || The current step is not an Unlock Map step
+		if (stepsToComplete == null || stepsToComplete[currentStep].stepType != InteractionStepTypes.UnlockMap)
 		{
 			return;
 		}
@@ -148,6 +165,10 @@ public class InteractionManager : MonoBehaviour
 				break;
 			case InteractionStepTypes.Story:
 				// TODO: Tell StoryManager to play the appropriate Story
+				break;
+			case InteractionStepTypes.UnlockMap:
+				// TODO: Play the Unlock Map animation
+				mapsManager.UnlockMap(stepsToComplete[currentStep].mapToUnlock);
 				break;
 			default:
 				break;

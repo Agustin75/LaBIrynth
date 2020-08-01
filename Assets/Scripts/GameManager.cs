@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour
 	[Header("Initialize Variables")]
 	[SerializeField]
 	private BoolVariable isPaused;
+	[SerializeField]
+	private ControlTypeVariable currControlType;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
 		isPaused.value = false;
+		currControlType.value = ControlType.Labyrinth;
 		// TODO: This happens only when the game is first started. Once the game is saved, it will start either in the Labyrinth, or in the last
 		//   bicross puzzle the player started (If it hasn't been finished yet)
 		// TODO: Move to Tutorial

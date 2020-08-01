@@ -9,6 +9,9 @@ public class InteractionManager : MonoBehaviour
 	private Transform popupParent;
 
 	[SerializeField]
+	private GameObject gateUnpassablePopup;
+
+	[SerializeField]
 	private PuzzleBehavior puzzleManager;
 
 	[SerializeField]
@@ -22,8 +25,8 @@ public class InteractionManager : MonoBehaviour
 	private InteractableObject objectInContact;
 
 	// TODO: Either use a BoolVariable or have some other way to grab any type of requirement
-	// Object required to get past the Interactable Object (Upgrade, Key, etc)
-	private GameObject requirement;
+	// Whether the object can be interacted with
+	private bool canInteract;
 
 	private GameObject stepPopup;
 
@@ -34,15 +37,14 @@ public class InteractionManager : MonoBehaviour
 	{
 		objectInContact = _object;
 		stepsToComplete = objectInContact.GetSteps();
-
-		// TODO: Add the item to "requirement", if it has any
+		canInteract = objectInContact.CanInteract();
 	}
 
 	// The player is no longer in contact with the InteractableObject
 	public void ObjectLostContact()
 	{
 		objectInContact = null;
-		requirement = null;
+		canInteract = false;
 	}
 
 	public void Interact()
@@ -54,11 +56,23 @@ public class InteractionManager : MonoBehaviour
 		}
 
 		// Something is required to get past this Object
-		if (requirement)
+		if (!canInteract)
 		{
-			// TODO: Check if the player has the required item
+			switch (objectInContact.GetObjectType())
+			{
+				case InteractableObjectTypes.Gate:
+					// Display the "Can't progress" message
+					gateUnpassablePopup.SetActive(true);
+					break;
+					// TODO: Add case for the obstacles
+					// TODO: Might have to add a way to show the player what he needs before they can pass through here (be it powerups or runes,
+					//		and whether it should specify which one in particular is needed)
+			}
 
-			// TODO: If the player doesn't have it, display the "Can't progress" message
+			// Set control to menu
+			currentControlType.value = ControlType.Menu;
+
+			return;
 		}
 
 		// Call the first step
@@ -87,7 +101,7 @@ public class InteractionManager : MonoBehaviour
 				// Revert the Control Type back to Labyrinth
 				currentControlType.value = ControlType.Labyrinth;
 				break;
-			case InteractionStepTypes.RemoveObstacle:
+			case InteractionStepTypes.PassedObstacle:
 				// TODO: Clear the Obstacle steps variables, if any
 				break;
 			case InteractionStepTypes.Story:
@@ -108,6 +122,8 @@ public class InteractionManager : MonoBehaviour
 			// TODO: All steps completed, go back to Labyrinth?
 
 			stepsToComplete = null;
+
+			currentStep = 0;
 
 			return;
 		}
@@ -139,6 +155,26 @@ public class InteractionManager : MonoBehaviour
 		NextStep();
 	}
 
+	public void ObstacleRemoved()
+	{
+		// If there is currently no step set up || The current step is not an Unlock Map step
+		if (stepsToComplete == null || stepsToComplete[currentStep].stepType != InteractionStepTypes.UnlockMap)
+		{
+			return;
+		}
+
+		NextStep();
+	}
+
+	public void CloseObjectUnpassablePopup()
+	{
+		// Hide the Object Unpassable Popup
+		gateUnpassablePopup.SetActive(false);
+
+		// Set the control type back to Labyrinth
+		currentControlType.value = ControlType.Labyrinth;
+	}
+
 	//////////////////////////
 	// Helpers
 	//////////////////////////
@@ -157,11 +193,17 @@ public class InteractionManager : MonoBehaviour
 				// Change the control type to Bicross
 				currentControlType.value = ControlType.Bicross;
 				break;
-			case InteractionStepTypes.RemoveObstacle:
+			case InteractionStepTypes.PassedObstacle:
 				// TODO: Tell obstacle to perform its Animation?
 				// TODO: Temporary, change to correct implementation once implemented (Enemy fleeing, obstacle disappearing, etc)
-				Destroy(objectInContact.gameObject);
+				//Destroy(objectInContact.gameObject);
+				// ERROR: Check this, sometimes it's null
+				objectInContact.Passed();
+
 				objectInContact = null;
+
+				// TODO: Temporary code, put after animation or however else it's implemented
+				NextStep();
 				break;
 			case InteractionStepTypes.Story:
 				// TODO: Tell StoryManager to play the appropriate Story

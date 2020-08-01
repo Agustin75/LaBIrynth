@@ -15,4 +15,9 @@ public class Enemy : InteractableObject
     {
         
     }
+
+	public override InteractableObjectTypes GetObjectType()
+	{
+		return InteractableObjectTypes.Enemy;
+	}
 }

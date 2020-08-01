@@ -23,4 +23,17 @@ public abstract class InteractableObject : MonoBehaviour
 	{
 		return interactionSteps;
 	}
+
+	public virtual bool CanInteract()
+	{
+		return true;
+	}
+
+	public virtual void Passed()
+	{
+		// Destroy the Rune object (TODO: Move this when feedback is implemented, probably to an animation)
+		Destroy(gameObject);
+	}
+
+	public abstract InteractableObjectTypes GetObjectType();
 }

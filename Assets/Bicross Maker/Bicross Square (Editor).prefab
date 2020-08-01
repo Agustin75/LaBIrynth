@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed094df9547ed34c909eb0e89813bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filledSprite: {fileID: 21300000, guid: 0baf0fae36933fc4cba55adc83585b36, type: 3}
-  emptySprite: {fileID: 21300000, guid: 627eae37eae514f47941f9e1066549cc, type: 3}
+  squareButton: {fileID: 8652652641522129286}
   feedbackImage: {fileID: 1925944396663824168}
   currentFillType: {fileID: 11400000, guid: b2c575d0e894eb040ac04001d48c3232, type: 2}
+  spritesHolder: {fileID: 11400000, guid: ac5f887780cba3348a782479f8e153f6, type: 2}

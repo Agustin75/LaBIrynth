@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8685fd526e326334ca257b22943a3da7, type: 3}
-  m_Name: 1
+  m_Name: Map 1
   m_EditorClassIdentifier: 
   rows: 5
   columns: 5

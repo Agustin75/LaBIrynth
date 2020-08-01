@@ -27,7 +27,7 @@ public class InteractionStepEditor : Editor
 				// Displays the array on the Inspector
 				EditorGUILayout.PropertyField(puzzlesArray, true);
 				break;
-			case InteractionStepTypes.RemoveObstacle:
+			case InteractionStepTypes.PassedObstacle:
 				// TODO: Display the Obstacle field (If any)
 				break;
 			case InteractionStepTypes.Story:

@@ -111,6 +111,7 @@ namespace BicrossMaker
 					currentHint = Instantiate(hintPrefab, columnHintsParent[c].transform).GetComponent<Image>();
 					// Update the sprite to the correct sprite
 					currentHint.sprite = spritesHolder.GetHintSprite(columnHints[c].listOfHints[h]);
+					currentHint.transform.Rotate(0, 0, 90);
 					// Add the new hint to the array
 					columnHintsImages[c].Add(currentHint);
 				}
@@ -179,6 +180,8 @@ namespace BicrossMaker
 					currentHint = Instantiate(hintPrefab, columnHintsParent[squareColumn].transform).GetComponent<Image>();
 					// Update the sprite to the correct sprite
 					currentHint.sprite = spritesHolder.GetHintSprite(currentHintType);
+					// Rotate the column sprite vertically
+					currentHint.transform.Rotate(0, 0, 90);
 					// Add the new hint to the array
 					columnHintsImages[squareColumn].Add(currentHint);
 				}

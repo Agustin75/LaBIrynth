@@ -23,6 +23,10 @@ public class PuzzleBehavior : MonoBehaviour
 	[SerializeField]
 	private SquareState currentFillType;
 
+	[Header("Events")]
+	[SerializeField]
+	private GameEvent puzzlesCompleted;
+
 	private BicrossPuzzle[] puzzlesToComplete;
 	private int currentPuzzle;
 
@@ -76,8 +80,7 @@ public class PuzzleBehavior : MonoBehaviour
 			bicrossCanvasParent.SetActive(false);
 
 			// TODO: Change this to account for whether the puzzle was a Labyrinth one or a menu one
-			// Change to the correct input type
-			currentControlType.value = ControlType.Labyrinth;
+			puzzlesCompleted.Raise();
 
 			return;
 		}

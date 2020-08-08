@@ -122,17 +122,12 @@ public class PlayerInput : MonoBehaviour
 	//////////////////////////////////
 	/// Game Event functions
 	//////////////////////////////////
-	public void OnWarp()
+	public void SetMenuControl()
 	{
 		currControlType.value = ControlType.Menu;
 	}
 
-	public void OnTeleport()
-	{
-		currControlType.value = ControlType.Labyrinth;
-	}
-
-	public void OnMenuClosed()
+	public void SetLabyrinthControl()
 	{
 		currControlType.value = ControlType.Labyrinth;
 	}

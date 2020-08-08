@@ -1016,8 +1016,7 @@ PrefabInstance:
         type: 3}
       propertyPath: puzzleToModify
       value: 
-      objectReference: {fileID: 11400000, guid: ed097891de479ee409b7b495b557a9ef,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8723440820594547037, guid: e55c4e72760d4104ab9fe03bb9ca3978,
         type: 3}
       propertyPath: m_AnchorMin.y

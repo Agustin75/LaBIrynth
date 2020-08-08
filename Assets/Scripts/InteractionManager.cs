@@ -95,6 +95,7 @@ public class InteractionManager : MonoBehaviour
 				Destroy(stepPopup);
 				// Reset the saved popup
 				stepPopup = null;
+				currentControlType.value = ControlType.Labyrinth;
 				break;
 			case InteractionStepTypes.Puzzle:
 				// TODO: Might have to rewrite if it's used for menu puzzles as well (which shouldn't be the case)
@@ -133,7 +134,7 @@ public class InteractionManager : MonoBehaviour
 		ExecuteStep();
 	}
 
-	public void PuzzleSolved()
+	public void PuzzlesCompleted()
 	{
 		// If there is currently no step set up || The current step is not a Puzzle step
 		if (stepsToComplete == null || stepsToComplete[currentStep].stepType != InteractionStepTypes.Puzzle)
@@ -157,8 +158,19 @@ public class InteractionManager : MonoBehaviour
 
 	public void ObstacleRemoved()
 	{
-		// If there is currently no step set up || The current step is not an Unlock Map step
-		if (stepsToComplete == null || stepsToComplete[currentStep].stepType != InteractionStepTypes.UnlockMap)
+		// If there is currently no step set up || The current step is not an Passed Obstacle step
+		if (stepsToComplete == null || stepsToComplete[currentStep].stepType != InteractionStepTypes.PassedObstacle)
+		{
+			return;
+		}
+
+		NextStep();
+	}
+
+	public void ClosePopup()
+	{
+		// If there is currently no step set up || The current step is not a Popup step
+		if (stepsToComplete == null || stepsToComplete[currentStep].stepType != InteractionStepTypes.PopUp)
 		{
 			return;
 		}
@@ -186,6 +198,7 @@ public class InteractionManager : MonoBehaviour
 			case InteractionStepTypes.PopUp:
 				// TODO: Display appropriate Popup
 				stepPopup = Instantiate(stepsToComplete[currentStep].popupPanel, popupParent);
+				currentControlType.value = ControlType.Menu;
 				break;
 			case InteractionStepTypes.Puzzle:
 				// Tell PuzzleBehavior to show the Puzzles

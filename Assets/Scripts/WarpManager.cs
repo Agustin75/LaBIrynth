@@ -15,7 +15,7 @@ public class WarpManager : MonoBehaviour
 	private Transform warpMenuItemsParent;
 
 	[SerializeField]
-	private List<Warp> warpsList;
+	private GameObject warpObjectsParent;
 
 	// Prefab for each Teleporter Item to display on the Menu
 	[SerializeField]
@@ -30,6 +30,9 @@ public class WarpManager : MonoBehaviour
 	// Hold the Warp Menu Items to make them un/interactable later
 	private List<WarpMenuItem> warpMenuItems;
 
+	// Holds a reference to all the existing warps in the Labyrinth
+	private List<Warp> warpsList;
+
 	private int numOfWarps;
 
     // Start is called before the first frame update
@@ -37,6 +40,7 @@ public class WarpManager : MonoBehaviour
     {
 		warpMenuItems = new List<WarpMenuItem>();
 
+		warpsList = new List<Warp>(warpObjectsParent.GetComponentsInChildren<Warp>());
 		numOfWarps = warpsList.Count;
 
 		foreach (Warp warp in warpsList)

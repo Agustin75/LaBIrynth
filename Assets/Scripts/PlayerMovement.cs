@@ -98,6 +98,16 @@ public class PlayerMovement : MonoBehaviour
 			// TODO: Raise the OnTeleporter Event when the player reaches the center of the teleporter
 			// TODO: This will probably be raised from an animation, but it could be something else
 			onWarpTouched.Raise();
+
+			return;
+		}
+
+		Stairs stairs = collision.gameObject.GetComponent<Stairs>();
+		// If the object is the stairs
+		if (stairs)
+		{
+			// Show the "Take the stairs" Menu
+			stairs.TakeStairs();
 		}
 	}
 

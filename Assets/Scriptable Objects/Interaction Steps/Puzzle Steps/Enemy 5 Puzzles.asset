@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b90047b13c05b8543a09b51a24d5a363, type: 3}
-  m_Name: Map 2 Puzzles
+  m_Name: Enemy 5 Puzzles
   m_EditorClassIdentifier: 
   stepType: 1
   puzzleList:
-  - {fileID: 11400000, guid: ed097891de479ee409b7b495b557a9ef, type: 2}
+  - {fileID: 11400000, guid: df419736dd390ec4ca0409ef2b67ba7d, type: 2}
   popupPanel: {fileID: 0}
   mapToUnlock: 0

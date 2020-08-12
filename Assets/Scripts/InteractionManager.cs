@@ -9,7 +9,7 @@ public class InteractionManager : MonoBehaviour
 	private Transform popupParent;
 
 	[SerializeField]
-	private GameObject gateUnpassablePopup;
+	private GameObject gateUnpassablePopup, obstacleUnpassablePopup;
 
 	[SerializeField]
 	private PuzzleBehavior puzzleManager;
@@ -24,7 +24,6 @@ public class InteractionManager : MonoBehaviour
 	// Interactable Object the player is currently in contact with
 	private InteractableObject objectInContact;
 
-	// TODO: Either use a BoolVariable or have some other way to grab any type of requirement
 	// Whether the object can be interacted with
 	private bool canInteract;
 
@@ -64,9 +63,11 @@ public class InteractionManager : MonoBehaviour
 					// Display the "Can't progress" message
 					gateUnpassablePopup.SetActive(true);
 					break;
-					// TODO: Add case for the obstacles
+				case InteractableObjectTypes.Obstacle:
 					// TODO: Might have to add a way to show the player what he needs before they can pass through here (be it powerups or runes,
 					//		and whether it should specify which one in particular is needed)
+					obstacleUnpassablePopup.SetActive(true);
+					break;
 			}
 
 			// Set control to menu
@@ -88,32 +89,7 @@ public class InteractionManager : MonoBehaviour
 			return;
 		}
 
-		switch (stepsToComplete[currentStep].stepType)
-		{
-			case InteractionStepTypes.PopUp:
-				// Destroy the popup instantiated
-				Destroy(stepPopup);
-				// Reset the saved popup
-				stepPopup = null;
-				currentControlType.value = ControlType.Labyrinth;
-				break;
-			case InteractionStepTypes.Puzzle:
-				// TODO: Might have to rewrite if it's used for menu puzzles as well (which shouldn't be the case)
-				// Revert the Control Type back to Labyrinth
-				currentControlType.value = ControlType.Labyrinth;
-				break;
-			case InteractionStepTypes.PassedObstacle:
-				// TODO: Clear the Obstacle steps variables, if any
-				break;
-			case InteractionStepTypes.Story:
-				// TODO: Clear the Story steps variables, if any
-				break;
-			case InteractionStepTypes.UnlockMap:
-				// TODO: Clear the Unlock Map steps variables, if any
-				break;
-			default:
-				break;
-		}
+		ExitStep();
 
 		// Move on to the next Step
 		currentStep++;
@@ -178,10 +154,26 @@ public class InteractionManager : MonoBehaviour
 		NextStep();
 	}
 
-	public void CloseObjectUnpassablePopup()
+	public void ExitInteraction()
 	{
-		// Hide the Object Unpassable Popup
+		ExitStep();
+		ObjectLostContact();
+		currentControlType.value = ControlType.Labyrinth;
+	}
+
+	public void CloseGateUnpassablePopup()
+	{
+		// Hide the Gate Unpassable Popup
 		gateUnpassablePopup.SetActive(false);
+
+		// Set the control type back to Labyrinth
+		currentControlType.value = ControlType.Labyrinth;
+	}
+
+	public void CloseObstacleUnpassablePopup()
+	{
+		// Hide the Obstacle Unpassable Popup
+		obstacleUnpassablePopup.SetActive(false);
 
 		// Set the control type back to Labyrinth
 		currentControlType.value = ControlType.Labyrinth;
@@ -190,6 +182,37 @@ public class InteractionManager : MonoBehaviour
 	//////////////////////////
 	// Helpers
 	//////////////////////////
+	// Clears all variables set on this step
+	private void ExitStep()
+	{
+		switch (stepsToComplete[currentStep].stepType)
+		{
+			case InteractionStepTypes.PopUp:
+				// Destroy the popup instantiated
+				Destroy(stepPopup);
+				// Reset the saved popup
+				stepPopup = null;
+				currentControlType.value = ControlType.Labyrinth;
+				break;
+			case InteractionStepTypes.Puzzle:
+				// TODO: Might have to rewrite if it's used for menu puzzles as well (which shouldn't be the case)
+				// Revert the Control Type back to Labyrinth
+				currentControlType.value = ControlType.Labyrinth;
+				break;
+			case InteractionStepTypes.PassedObstacle:
+				// TODO: Clear the Obstacle steps variables, if any
+				break;
+			case InteractionStepTypes.Story:
+				// TODO: Clear the Story steps variables, if any
+				break;
+			case InteractionStepTypes.UnlockMap:
+				// TODO: Clear the Unlock Map steps variables, if any
+				break;
+			default:
+				break;
+		}
+	}
+
 	// Handles what happens in this step
 	private void ExecuteStep()
 	{

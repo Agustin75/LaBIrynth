@@ -102,12 +102,18 @@ public class PlayerMovement : MonoBehaviour
 			return;
 		}
 
-		Stairs stairs = collision.gameObject.GetComponent<Stairs>();
-		// If the object is the stairs
-		if (stairs)
+		//Stairs stairs = collision.gameObject.GetComponent<Stairs>();
+		//// If the object is the stairs
+		//if (stairs)
+		//{
+		//	// Show the "Take the stairs" Menu
+		//	stairs.TakeStairs();
+		//}
+
+		Upgrade upgrade = collision.gameObject.GetComponent<Upgrade>();
+		if (upgrade)
 		{
-			// Show the "Take the stairs" Menu
-			stairs.TakeStairs();
+			upgrade.Obtained();
 		}
 	}
 

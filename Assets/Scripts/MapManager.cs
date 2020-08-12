@@ -5,17 +5,15 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject mapObjectsParent;
-
-	[SerializeField]
 	private GameEvent mapUnlockedEvent;
 
-	private List<Map> maps;
+	[SerializeField]
+	private List<GameObject> maps;
 
     // Start is called before the first frame update
     void Start()
     {
-		maps = new List<Map>(mapObjectsParent.GetComponentsInChildren<Map>());
+
     }
 
     // Update is called once per frame
@@ -29,7 +27,8 @@ public class MapManager : MonoBehaviour
 		if (_mapId < 0 || _mapId >= maps.Count)
 			return;
 
-		maps[_mapId].MapUnlocked();
+		// Hide the locked map
+		maps[_mapId].SetActive(false);
 
 		mapUnlockedEvent.Raise();
 	}

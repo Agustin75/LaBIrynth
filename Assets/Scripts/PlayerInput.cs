@@ -10,14 +10,12 @@ public class PlayerInput : MonoBehaviour
 	[Header("Scriptable Objects")]
 	[SerializeField]
 	private ControlTypeVariable currControlType;
-	[SerializeField]
-	private BoolVariable isPaused;
 
 	[Header("Events")]
 	[SerializeField]
 	private GameEvent interactEvent;
 	[SerializeField]
-	private GameEvent pauseEvent, resumeEvent;
+	private GameEvent openInventoryEvent;
 
 	private int xMovement, yMovement;
 
@@ -30,26 +28,6 @@ public class PlayerInput : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			if (isPaused)
-			{
-				resumeEvent.Raise();
-			}
-			else
-			{
-				pauseEvent.Raise();
-			}
-
-			isPaused.value = !isPaused;
-			return;
-		}
-
-		if (isPaused)
-		{
-			return;
-		}
-
 		switch (currControlType.value)
 		{
 			case ControlType.Bicross:
@@ -105,6 +83,14 @@ public class PlayerInput : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
 			InteractPressed();
+		}
+
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			// Open inventory
+			openInventoryEvent.Raise();
+
+			currControlType.value = ControlType.Menu;
 		}
 	}
 

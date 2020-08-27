@@ -6,7 +6,7 @@ public class Upgrade : MonoBehaviour
 {
 	[Header("Scriptable Objects")]
 	[SerializeField]
-	private BoolVariable upgradeUnlocked;
+	private UpgradeInfo baseInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +20,8 @@ public class Upgrade : MonoBehaviour
         
     }
 
-	public void Obtained()
+	public int GetID()
 	{
-		// TODO: Show animation/message/feedback for obtaining the upgrade
-		// TODO: Play obtained sound
-
-		upgradeUnlocked.value = true;
-
-		Destroy(gameObject);
+		return baseInfo.GetID();
 	}
 }

@@ -5,9 +5,13 @@ using UnityEngine;
 public class Gate : InteractableObject
 {
 	[Header("Scriptable Objects")]
+
 	[SerializeField]
 	// Rune(s) that unlocks this Gate
-	private BoolVariable[] unlockRune;
+	private Item runeRequired;
+
+	[SerializeField]
+	private InventoryManager inventoryManager;
 
 	private int ID;
 
@@ -25,19 +29,29 @@ public class Gate : InteractableObject
 
 	public override bool CanInteract()
 	{
-		foreach (bool rune in unlockRune)
+		if (!inventoryManager.ContainsItem(runeRequired))
 		{
-			if (!rune)
-			{
-				return false;
-			}
+			return false;
 		}
 
 		return base.CanInteract();
 	}
 
+	public override void Passed()
+	{
+		// Remove them from the player's Inventory
+		inventoryManager.RemoveItem(runeRequired);
+
+		base.Passed();
+	}
+	
 	public override InteractableObjectTypes GetObjectType()
 	{
 		return InteractableObjectTypes.Gate;
+	}
+
+	public Item GetItemRequired()
+	{
+		return runeRequired;
 	}
 }

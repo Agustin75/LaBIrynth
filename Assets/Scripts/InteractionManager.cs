@@ -9,7 +9,10 @@ public class InteractionManager : MonoBehaviour
 	private Transform popupParent;
 
 	[SerializeField]
-	private GameObject gateUnpassablePopup, obstacleUnpassablePopup;
+	private GameObject obstacleUnpassablePopup;
+
+	[SerializeField]
+	private GatePopup gateUnpassablePopup;
 
 	[SerializeField]
 	private PuzzleBehavior puzzleManager;
@@ -60,8 +63,11 @@ public class InteractionManager : MonoBehaviour
 			switch (objectInContact.GetObjectType())
 			{
 				case InteractableObjectTypes.Gate:
+					Gate gateObject = (Gate)objectInContact;
+					// TODO: Display the rune(s) required
+					gateUnpassablePopup.ShowPopup(gateObject.GetItemRequired());
 					// Display the "Can't progress" message
-					gateUnpassablePopup.SetActive(true);
+					gateUnpassablePopup.gameObject.SetActive(true);
 					break;
 				case InteractableObjectTypes.Obstacle:
 					// TODO: Might have to add a way to show the player what he needs before they can pass through here (be it powerups or runes,
@@ -164,7 +170,7 @@ public class InteractionManager : MonoBehaviour
 	public void CloseGateUnpassablePopup()
 	{
 		// Hide the Gate Unpassable Popup
-		gateUnpassablePopup.SetActive(false);
+		gateUnpassablePopup.gameObject.SetActive(false);
 
 		// Set the control type back to Labyrinth
 		currentControlType.value = ControlType.Labyrinth;

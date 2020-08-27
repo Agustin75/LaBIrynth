@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bc73563587da24981950ff7d6c4953, type: 3}
   m_Name: Water Shot
   m_EditorClassIdentifier: 
-  value: 1
+  value: 0

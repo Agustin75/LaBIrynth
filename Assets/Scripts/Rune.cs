@@ -6,7 +6,10 @@ public class Rune : InteractableObject
 {
 	[Header("Scriptable Objects")]
 	[SerializeField]
-	private BoolVariable runeUnlocked;
+	private Item runeInfo;
+
+	[SerializeField]
+	private InventoryManager inventoryManager;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +26,7 @@ public class Rune : InteractableObject
 	// Successfully passed by the object (Defeated the enemy, obtained the rune, etc)
 	public override void Passed()
 	{
-		// Set the corresponding Rune to solved
-		runeUnlocked.value = true;
+		inventoryManager.AddItem(runeInfo);
 
 		base.Passed();
 	}

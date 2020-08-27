@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
 
 	[Header("Scriptable Objects")]
 	[SerializeField]
+	private UpgradesManager upgradesManager;
+
+	[SerializeField]
 	private BoolVariable isPlayerTeleporting;
 
 	[SerializeField]
@@ -113,17 +116,14 @@ public class PlayerMovement : MonoBehaviour
 		Upgrade upgrade = collision.gameObject.GetComponent<Upgrade>();
 		if (upgrade)
 		{
-			upgrade.Obtained();
+			upgradesManager.UpgradeObtained(upgrade.GetID());
+			// TODO: Check where to hide/destroy the Upgrade item and play the sounds, animations, etc
+			Destroy(upgrade.gameObject);
 		}
 	}
 
 	public void Move(int _xDirection, int _yDirection)
 	{
 		rb.velocity = new Vector2(_xDirection * movementSpeed, _yDirection * movementSpeed);
-	}
-
-	public void GamePaused()
-	{
-		rb.velocity = Vector2.zero;
 	}
 }

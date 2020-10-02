@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warp : MonoBehaviour
+public class Warp : SaveObject
 {
 	[SerializeField]
 	private Camera warpCamera;
@@ -30,6 +30,11 @@ public class Warp : MonoBehaviour
         
     }
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Activate
+	// -------------------------
+	// Activates the warp for the first time (Plays sound, animation and etc)
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void Activate()
 	{
 		warpActive = true;
@@ -38,6 +43,23 @@ public class Warp : MonoBehaviour
 		warpImage.sprite = spritesHolder.GetWarpSprite(warpActive);
 	}
 
+	/////////////////////////////////////////////////////////////////////////////
+	// Inheritable Functions
+	/////////////////////////////////////////////////////////////////////////////
+	public override void SetObjectState(bool _status)
+	{
+		warpActive = _status;
+		warpImage.sprite = spritesHolder.GetWarpSprite(warpActive);
+	}
+
+	public override bool GetCurrentState()
+	{
+		return warpActive;
+	}
+
+	//////////////////////////
+	// Accessors
+	//////////////////////////
 	public int GetFloorNumber()
 	{
 		return floorNumber;

@@ -118,7 +118,9 @@ public class PlayerMovement : MonoBehaviour
 		{
 			upgradesManager.UpgradeObtained(upgrade.GetID());
 			// TODO: Check where to hide/destroy the Upgrade item and play the sounds, animations, etc
-			Destroy(upgrade.gameObject);
+			//Destroy(upgrade.gameObject);
+			// Hide it instead so SaveManager works properly
+			upgrade.gameObject.SetActive(false);
 		}
 	}
 

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d725fe3ef8a994aa3dd86737b40c8e, type: 3}
-  m_Name: Stairs Taken
+  m_Script: {fileID: 11500000, guid: 1deaa6f2314b0af40b626f6410b18a88, type: 3}
+  m_Name: Save Manager
   m_EditorClassIdentifier: 

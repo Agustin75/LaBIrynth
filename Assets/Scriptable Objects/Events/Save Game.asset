@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2419dea65e21e94881d7cadf164013e, type: 3}
-  m_Name: Upgrades Manager
+  m_Script: {fileID: 11500000, guid: 44d725fe3ef8a994aa3dd86737b40c8e, type: 3}
+  m_Name: Save Game
   m_EditorClassIdentifier: 
-  upgradesStatus:
-  - {fileID: 11400000, guid: 26442a0bc9899ef43a98077693733ab9, type: 2}
-  saveManager: {fileID: 11400000, guid: d579ace0ae6ec3e4c8af672d3137b964, type: 2}

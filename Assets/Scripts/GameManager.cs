@@ -12,6 +12,14 @@ public class GameManager : MonoBehaviour
 	private Map firstMapUnlocked;
 	[SerializeField]
 	private InteractionStep[] firstEvents;
+	[SerializeField]
+	private FloorManager[] floorManagers;
+
+	[Header("Scriptable Objects")]
+	[SerializeField]
+	private SaveManager saveManager;
+	[SerializeField]
+	private UpgradesManager upgradesManager;
 
 	[Header("Initialize Variables")]
 	[SerializeField]
@@ -21,17 +29,52 @@ public class GameManager : MonoBehaviour
 	void Start()
     {
 		currControlType.value = ControlType.Labyrinth;
-		// TODO: This happens only when the game is first started. Once the game is saved, it will start either in the Labyrinth, or in the last
-		//   bicross puzzle the player started (If it hasn't been finished yet)
-		// TODO: Move to Tutorial
-		//puzzleManager.SetPuzzles(firstPuzzles);
-    }
+
+		// Try to load the last saved file
+		saveManager.LoadFile();
+
+		// Initialize all Managers
+		foreach (FloorManager floor in floorManagers)
+		{
+			floor.Initialize();
+			upgradesManager.Initialize();
+		}
+
+		//if (saveManager.IsNewGame())
+		//{
+		//	// TODO: This happens only when the game is first started. Once the game is saved, it will start either in the Labyrinth, or in the last
+		//	//   bicross puzzle the player started (If it hasn't been finished yet)
+
+		//	// TODO: Move to Tutorial
+		//	//puzzleManager.SetPuzzles(firstPuzzles);
+		//}
+	}
 
     // Update is called once per frame
     void Update()
     {
         
     }
+
+	// If the app is closed without going to the Main Menu
+	private void OnApplicationQuit()
+	{
+		SaveGame();
+	}
+
+	public void SaveGame()
+	{
+		// Tell FloorManager to save the objects states
+		foreach (FloorManager floor in floorManagers)
+		{
+			floor.SaveInformation();
+		}
+
+		upgradesManager.SaveInformation();
+
+		// Save the game to file
+		saveManager.SaveFile();
+	}
 
 	// TODO: Handle what happens when a Bicross Puzzle is solved (Move back to Labyrinth if playing there, or to the menu if replaying a puzzle)
 }

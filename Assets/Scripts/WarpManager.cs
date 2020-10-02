@@ -62,10 +62,6 @@ public class WarpManager : MonoBehaviour
         
     }
 
-	// TODO: Add a function to set all Warps to Active based on the saved data
-
-	// TODO: Add a function to send all Warps to save their active status on a file
-
 	public void OpenWarpMenu()
 	{
 		for (int i = 0; i < numOfWarps; i++)

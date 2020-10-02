@@ -115,10 +115,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3611628964454553918}
-  - component: {fileID: 3611628964454553919}
   - component: {fileID: 3611628964454553916}
+  - component: {fileID: 3611628964454553919}
+  - component: {fileID: 4882475000205972335}
   m_Layer: 0
-  m_Name: Fire 1
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,24 +140,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3611628964454553919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3611628964454553913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5b56bec47f20147aecc48a74db3a4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionSteps:
-  - {fileID: 11400000, guid: 46f9490a760658d45992b002cf0c6ce6, type: 2}
-  - {fileID: 11400000, guid: 8fb50e7da3325424a882bdef74406b3e, type: 2}
-  obstacleSprites:
-  - {fileID: 3611628963847494178}
-  upgradeRequired: {fileID: 11400000, guid: 26442a0bc9899ef43a98077693733ab9, type: 2}
 --- !u!50 &3611628964454553916
 Rigidbody2D:
   serializedVersion: 4
@@ -178,3 +161,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3611628964454553919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611628964454553913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5b56bec47f20147aecc48a74db3a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionSteps:
+  - {fileID: 11400000, guid: 46f9490a760658d45992b002cf0c6ce6, type: 2}
+  - {fileID: 11400000, guid: 8fb50e7da3325424a882bdef74406b3e, type: 2}
+  obstacleSprites:
+  - {fileID: 3611628963847494178}
+  upgradeRequired: {fileID: 11400000, guid: 26442a0bc9899ef43a98077693733ab9, type: 2}
+--- !u!114 &4882475000205972335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611628964454553913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3081953757551e24591c4c132b47c4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

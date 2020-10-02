@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9010773738121773850}
   - component: {fileID: 9010773738121773849}
   - component: {fileID: 9010773738121773848}
+  - component: {fileID: 4035738271179819381}
   m_Layer: 0
   m_Name: Rune
   m_TagString: Untagged
@@ -122,6 +123,17 @@ MonoBehaviour:
   interactionSteps:
   - {fileID: 11400000, guid: 14241cdd9c054b543a3aa05f8496c9a7, type: 2}
   - {fileID: 11400000, guid: 8fb50e7da3325424a882bdef74406b3e, type: 2}
-  runeUnlocked: {fileID: 11400000, guid: 64845e273342218449a5c5dc48e53413, type: 2}
   runeInfo: {fileID: 11400000, guid: 372673fe12e977849a54ab01bd4e0af1, type: 2}
   inventoryManager: {fileID: 11400000, guid: 384972572d2b4814dbdcc35e9f3f12aa, type: 2}
+--- !u!114 &4035738271179819381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010773738121773854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3081953757551e24591c4c132b47c4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -31,8 +31,10 @@ public abstract class InteractableObject : MonoBehaviour
 
 	public virtual void Passed()
 	{
-		// Destroy the Rune object (TODO: Move this when feedback is implemented, probably to an animation)
-		Destroy(gameObject);
+		// Destroy the object (TODO: Move this when feedback is implemented, probably to an animation)
+		//Destroy(gameObject);
+		// Hide it instead so SaveManager works properly
+		gameObject.SetActive(false);
 	}
 
 	public abstract InteractableObjectTypes GetObjectType();

@@ -64,7 +64,7 @@ public class InteractionManager : MonoBehaviour
 			{
 				case InteractableObjectTypes.Gate:
 					Gate gateObject = (Gate)objectInContact;
-					// TODO: Display the rune(s) required
+					// Display the rune(s) required
 					gateUnpassablePopup.ShowPopup(gateObject.GetItemRequired());
 					// Display the "Can't progress" message
 					gateUnpassablePopup.gameObject.SetActive(true);

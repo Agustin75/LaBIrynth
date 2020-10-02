@@ -8,6 +8,7 @@ public class MapManager : MonoBehaviour
 	private GameEvent mapUnlockedEvent;
 
 	[SerializeField]
+	// TODO: Change this to be more modular (Automatically get all relevant maps) and to allow multiple floors.
 	private List<GameObject> maps;
 
     // Start is called before the first frame update
@@ -32,8 +33,4 @@ public class MapManager : MonoBehaviour
 
 		mapUnlockedEvent.Raise();
 	}
-
-	// TODO: Save all unlocked Maps
-
-	// TODO: Unlock all saved Maps
 }

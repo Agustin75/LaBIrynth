@@ -12,6 +12,7 @@ public class SaveManager : ScriptableObject
 	{
 		public FloorInfo[] floorsData;
 		public int UpgradesObtained;
+		public int[] ItemsData;
 	}
 
 	[System.Serializable]
@@ -22,14 +23,17 @@ public class SaveManager : ScriptableObject
 
 	private bool isNewGame;
 	private SaveData gameData;
-	// List used only before saving, will be converted into array to save to file
+
+	// Lists used only before saving, will be converted into arrays to save to file
 	private List<FloorInfo> floorsInformation;
+	private List<int> itemsHeld;
 
 	// Save data to file
 	public void SaveFile()
 	{
-		// Convert Floor Info List into array
+		// Convert all Lists into arrays
 		gameData.floorsData = floorsInformation.ToArray();
+		gameData.ItemsData = itemsHeld.ToArray();
 
 		BinaryFormatter bf = new BinaryFormatter();
 
@@ -61,6 +65,7 @@ public class SaveManager : ScriptableObject
 			gameData = new SaveData();
 
 			floorsInformation = new List<FloorInfo>();
+			itemsHeld = new List<int>();
 
 			return false;
 		}
@@ -72,8 +77,10 @@ public class SaveManager : ScriptableObject
 		try
 		{
 			gameData = (SaveData)bf.Deserialize(file);
-			// Convert Floor Info Data array to List for easier handling
+
+			// Convert the Data arrays to Lists for easier handling
 			floorsInformation = new List<FloorInfo>(gameData.floorsData);
+			itemsHeld = new List<int>(gameData.ItemsData);
 		}
 		catch
 		{
@@ -97,6 +104,12 @@ public class SaveManager : ScriptableObject
 	public int GetUpgradesInfo()
 	{
 		return gameData.UpgradesObtained;
+	}
+
+	// Returns the information for the Inventory
+	public List<int> GetInventory()
+	{
+		return itemsHeld;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -135,6 +148,22 @@ public class SaveManager : ScriptableObject
 	public void SaveUpgradesInfo(int _upgradesStates)
 	{
 		gameData.UpgradesObtained = _upgradesStates;
+	}
+
+	public void SaveInventory(List<Item> _inventory)
+	{
+		// Reset the itemsHeld List
+		itemsHeld.Clear();
+
+		// If the player is holding any items
+		if (_inventory != null)
+		{
+			foreach (Item item in _inventory)
+			{
+				// Add each of them to itemsHeld
+				itemsHeld.Add(item.GetItemID());
+			}
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////

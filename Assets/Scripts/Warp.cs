@@ -16,12 +16,12 @@ public class Warp : SaveObject
 	[SerializeField]
 	private SpritesHolder spritesHolder;
 
-	private bool warpActive;
+	private bool warpActive = false;
 
     // Start is called before the first frame update
     void Start()
     {
-		warpActive = false;
+
 	}
 
     // Update is called once per frame

@@ -7,12 +7,16 @@ using UnityEngine;
 public class Item : ScriptableObject, IComparable<Item>
 {
 	[SerializeField]
-	private int ID;
-	[SerializeField]
 	private ItemType itemType;
 	[SerializeField]
 	private Sprite itemSprite;
 
+	[SerializeField]
+	[HideInInspector]
+	// Needs to be saved so the so it always stays the same between Editor sessions
+	private int ID = -1;
+
+	private int sortID;
 	private string name, description;
 
 	public int CompareTo(Item other)
@@ -20,11 +24,22 @@ public class Item : ScriptableObject, IComparable<Item>
 		if (itemType != other.itemType)
 			return itemType.CompareTo(other.itemType);
 
-		return ID.CompareTo(other.ID);
+		return sortID.CompareTo(other.sortID);
 	}
 
 	public Sprite GetItemSprite()
 	{
 		return itemSprite;
+	}
+
+	// NOTE: DEBUG FUNCTIONS ONLY!
+	public int GetItemID()
+	{
+		return ID;
+	}
+
+	public void SetItemID(int _id)
+	{
+		ID = _id;
 	}
 }

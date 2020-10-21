@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsList: []
   inventoryChanged: 1
+  saveManager: {fileID: 11400000, guid: d579ace0ae6ec3e4c8af672d3137b964, type: 2}
+  itemDatabase: {fileID: 11400000, guid: 466a46ecfe1e11f4097c76d2184b2c87, type: 2}

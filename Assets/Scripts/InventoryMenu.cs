@@ -53,7 +53,7 @@ public class InventoryMenu : MonoBehaviour
 	{
 		if (inventory.HasInventoryChanged())
 		{
-			// TODO: Display all items currently in the inventory
+			// Display all items currently in the inventory
 			List<Item> itemList = inventory.GetItemList();
 
 			// Save the new number of pages (If the player has no items, there are no pages)
@@ -98,10 +98,6 @@ public class InventoryMenu : MonoBehaviour
 			List<BoolVariable> upgradeStatus = upgradesManager.GetUpgradesStatus();
 
 			// Update the upgrades display to show all owned
-			//for (int i = 0; i < upgradeStatus.Count; i++)
-			//{
-			//	upgradesInfoList[i].gameObject.SetActive(true);
-			//}
 			for (int i = 0; i < upgradeStatus.Count; i++)
 			{
 				if (upgradeStatus[i])
@@ -119,7 +115,7 @@ public class InventoryMenu : MonoBehaviour
 	{
 		if (currPage == 0)
 		{
-			// TODO: Make the Previous Page Button interactable
+			// Make the Previous Page Button interactable
 			prevPageButton.interactable = true;
 		}
 
@@ -127,7 +123,7 @@ public class InventoryMenu : MonoBehaviour
 
 		if (currPage == numPages - 1)
 		{
-			// TODO: Make the Next Page Button uninteractable
+			// Make the Next Page Button uninteractable
 			nextPageButton.interactable = false;
 		}
 
@@ -138,7 +134,7 @@ public class InventoryMenu : MonoBehaviour
 	{
 		if (currPage == numPages - 1)
 		{
-			// TODO: Make the Next Page Button interactable
+			// Make the Next Page Button interactable
 			nextPageButton.interactable = true;
 		}
 
@@ -146,7 +142,7 @@ public class InventoryMenu : MonoBehaviour
 
 		if (currPage == 0)
 		{
-			// TODO: Make the Previous Page Button uninteractable
+			// Make the Previous Page Button uninteractable
 			prevPageButton.interactable = false;
 		}
 

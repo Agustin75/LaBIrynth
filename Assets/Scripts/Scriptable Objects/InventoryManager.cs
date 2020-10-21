@@ -13,6 +13,45 @@ public class InventoryManager : ScriptableObject
 	// Inventory should start marked as "Changed" so it displays the items the first time the inventory menu is opened
 	private bool inventoryChanged = true;
 
+	[Header("Scriptable Objects")]
+	[SerializeField]
+	private SaveManager saveManager;
+	[SerializeField]
+	private ItemDatabase itemDatabase;
+
+	public void Initialize()
+	{
+		if (saveManager.IsNewGame())
+		{
+			SaveInformation();
+
+			return;
+		}
+
+		// Get the List of item IDs held by he player
+		List<int> inventoryState = saveManager.GetInventory();
+
+		itemsList = new List<Item>();
+		foreach (int itemID in inventoryState)
+		{
+			// Grab the corresponding item from the Item Database and add it to the Inventory
+			itemsList.Add(itemDatabase.GetItem(itemID));
+		}
+
+		// Sets the Inventory as dirty to update it the next time the player opens it
+		inventoryChanged = true;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Save Information
+	// -------------------------
+	// Saves the current inventory into the SaveManager
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	public void SaveInformation()
+	{
+		saveManager.SaveInventory(itemsList);
+	}
+
 	// Adds the passed in item to the player's inventory
 	// TODO: Will need to change if the player can have multiple copies of the same item
 	public void AddItem(Item _item)

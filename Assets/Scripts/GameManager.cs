@@ -14,12 +14,16 @@ public class GameManager : MonoBehaviour
 	private InteractionStep[] firstEvents;
 	[SerializeField]
 	private FloorManager[] floorManagers;
+	[SerializeField]
+	private WarpManager warpManager;
 
 	[Header("Scriptable Objects")]
 	[SerializeField]
 	private SaveManager saveManager;
 	[SerializeField]
 	private UpgradesManager upgradesManager;
+	[SerializeField]
+	private InventoryManager inventoryManager;
 
 	[Header("Initialize Variables")]
 	[SerializeField]
@@ -37,8 +41,14 @@ public class GameManager : MonoBehaviour
 		foreach (FloorManager floor in floorManagers)
 		{
 			floor.Initialize();
-			upgradesManager.Initialize();
 		}
+
+		inventoryManager.Initialize();
+		upgradesManager.Initialize();
+
+		// Initialize after the other managers so the warps are properly loaded from file beforehand
+		// TODO: Figure out why this fixes the issue in Debug mode but not in the Build
+		warpManager.Initialize();
 
 		//if (saveManager.IsNewGame())
 		//{
@@ -70,6 +80,7 @@ public class GameManager : MonoBehaviour
 			floor.SaveInformation();
 		}
 
+		inventoryManager.SaveInformation();
 		upgradesManager.SaveInformation();
 
 		// Save the game to file

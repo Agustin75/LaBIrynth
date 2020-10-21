@@ -35,8 +35,13 @@ public class WarpManager : MonoBehaviour
 
 	private int numOfWarps;
 
-    // Start is called before the first frame update
-    void Start()
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void Initialize()
     {
 		warpMenuItems = new List<WarpMenuItem>();
 
@@ -55,12 +60,6 @@ public class WarpManager : MonoBehaviour
 			warpMenuItems.Add(item);
 		}
 	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 	public void OpenWarpMenu()
 	{
